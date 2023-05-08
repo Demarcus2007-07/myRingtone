@@ -1,0 +1,79 @@
+from earsketch import *
+
+setTempo(90)
+
+#music
+ACS = AK_UNDOG_ACOUSTIC_GUITAR_3
+hat = Y07_HI_HAT
+kick1 = OS_KICK01
+kick2 = OS_KICK02
+tom1 = OS_LOWTOM03
+bass1 = AK_UNDOG_BASS_2
+snare1 = IRCA_OS_TIMBALES_HIGH_FILL
+crash = IRCA_OS_TIMBALES_PLATILLO
+drumBeat = COMMON_LOVE_DRUMBEAT_1
+SFX = AK_UNDOG_STOMP_6
+piano = AK_UNDOG_PIANO_1
+beat1 = "0+++++"
+beat2 = "0+++++++++++"
+#section1
+def section1M(startMeasure, endMeasure):
+    fitMedia(ACS, 1, startMeasure, endMeasure)
+    fitMedia(hat, 2, startMeasure, endMeasure)
+
+section1M(1, 9)
+def section1PC(startMeasure, endMeasure):
+    for measure in range(startMeasure, endMeasure,2):
+        makeBeat(kick1, 3, measure, beat1)
+        makeBeat(kick2, 4, measure+0.4, beat2)
+section1PC(1,9)
+        
+def section1PC2(startMeasure, endMeasure):
+    for measure in range(startMeasure, endMeasure,2):
+        makeBeat(tom1, 5, measure, beat1)
+        makeBeat(kick1, 6, measure+0.4, beat2)
+section1PC2(2,9)
+        
+def myFunction(startMeasure, endMeasure):
+    fitMedia(drumBeat, 7, startMeasure , endMeasure)
+myFunction(1,9)
+
+#section2
+def section2(startMeasure, endMeasure):
+    fitMedia(bass1, 8, startMeasure, endMeasure)
+section2(9, 16.9)
+
+#section3/A+C
+section1M(17,25)
+myFunction(17,25)
+section1PC(17,25)
+section1PC2(18,25)
+fitMedia(crash, 9, 16.7, 17.2)
+
+#section4
+fitMedia(piano, 10, 27, 31)
+fitMedia(SFX, 11, 25, 31)
+#setup section1
+setEffect(5, FILTER, FILTER_FREQ, 8000)
+setEffect(1, VOLUME, GAIN, 0, 7, -60, 9)
+setEffect(3, VOLUME, GAIN, 0, 5, -60, 7)
+setEffect(4, VOLUME, GAIN, 0, 5, -60, 7)
+setEffect(5, VOLUME, GAIN, 0, 5, -60, 7)
+setEffect(6, VOLUME, GAIN, 0, 5, -60, 7)
+setEffect(7, VOLUME, GAIN, 0, 5, -60, 7)
+#setupsection3
+setEffect(1, VOLUME, GAIN, 0, 17, 0, 23)
+setEffect(3, VOLUME, GAIN, 0, 17, 0, 23)
+setEffect(4, VOLUME, GAIN, 0, 17, 0, 23)
+setEffect(5, VOLUME, GAIN, 0, 17, 0, 23)
+setEffect(6, VOLUME, GAIN, 0, 17, 0, 23)
+setEffect(7, VOLUME, GAIN, 0, 17, 0, 23)
+
+#setupsection4
+setEffect(1, VOLUME, GAIN, 0, 23, -60, 25)
+setEffect(3, VOLUME, GAIN, 0, 23, -60, 25)
+setEffect(4, VOLUME, GAIN, 0, 23, -60, 25)
+setEffect(5, VOLUME, GAIN, 0, 23, -60, 25)
+setEffect(6, VOLUME, GAIN, 0, 23, -60, 25)
+setEffect(7, VOLUME, GAIN, 0, 23, -60, 25)
+setEffect(10, DELAY, DELAY_TIME, 0, 30.9, 300, 30.9)
